@@ -1,4 +1,4 @@
-# LaravelGa4EventTracking
+# LaravelGa4EventTracking - WIP
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
