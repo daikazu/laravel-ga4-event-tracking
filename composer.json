@@ -1,0 +1,45 @@
+{
+    "name": "daikazu/laravel-ga4-event-tracking",
+    "description": "Laravel package to easily send events to Google Analytics 4",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mike Wall",
+            "email": "daikazu@gmail.com",
+            "homepage": "mikewall.dev"
+        }
+    ],
+    "homepage": "https://github.com/daikazu/laravel-ga4-event-tracking",
+    "keywords": [
+        "laravel",
+        "google-analytics-4",
+        "GA4",
+        "laravel-analytics",
+        "analytics",
+        "analytics-event-tracking"
+    ],
+    "require": {
+        "illuminate/support": "~9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Daikazu\\GA4EventTracking\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Daikazu\\GA4EventTracking\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Daikazu\\GA4EventTracking\\ServiceProvider"
+            ]
+        }
+    }
+}
