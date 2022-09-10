@@ -15,7 +15,6 @@ class StoreClientIdInSession
 
 
         $data = $request->validate(['client_id' => 'required|string|max:255']);
-        ray($data);
 
         $clientIsSession->update($data['client_id']);
 

@@ -17,7 +17,6 @@ class BroadcastEvent implements EventBroadcaster
     public function withParameters(callable $callback): self
     {
         $callback($this->GA4);
-
         return $this;
     }
 

@@ -2,8 +2,12 @@
 
 namespace Daikazu\GA4EventTracking;
 
+use Daikazu\GA4EventTracking\Exceptions\MissingClientIdException;
+use Daikazu\GA4EventTracking\Exceptions\ReservedEventNameException;
 use Exception;
 use Illuminate\Support\Facades\Http;
+use phpDocumentor\Reflection\Types\Boolean;
+
 
 class GA4
 {
@@ -55,10 +59,13 @@ class GA4
         return $this;
     }
 
+    /**
+     * @throws MissingClientIdException
+     */
     public function sendEvent(array $eventData): array
     {
         if (!$this->clientId && !$this->clientId = session(config('ga4-event-tracking.client_id_session_key'))) {
-            throw new Exception('Please use the package provided blade directive or set client_id manually before posting an event.');
+            throw new MissingClientIdException;
         }
 
         $response = Http::withOptions([
@@ -70,6 +77,7 @@ class GA4
             'client_id' => $this->clientId,
             'events' => [$eventData],
         ]);
+
 
         if ($this->debugging) {
             return $response->json();
@@ -106,12 +114,16 @@ class GA4
         $this->eventAction = $eventAction;
     }
 
+
     /**
-     * @throws Exception
+     * @throws MissingClientIdException
      */
     public function sendAsSystemEvent(){
 
 //        $this->enableDebugging();
+
+
+
 
 
         ray($this, $this->sendEvent([
@@ -122,6 +134,50 @@ class GA4
         ]));
     }
 
+
+    public function validateEventName($eventName): Boolean
+    {
+        $reservedNames = [
+            'ad_activeview',
+            'ad_click',
+            'ad_exposure',
+            'ad_impression',
+            'ad_query',
+            'adunit_exposure',
+            'app_clear_data',
+            'app_install',
+            'app_update',
+            'app_remove',
+            'app_background',
+            'app_exception',
+            'app_foreground',
+            'app_notification_dismiss',
+            'app_notification_foreground',
+            'app_notification_open',
+            'app_notification_receive',
+            'app_uninstall',
+            'app_update',
+            'error',
+            'first_open',
+            'first_visit',
+            'in_app_purchase',
+            'notification_dismiss',
+            'notification_foreground',
+            'notification_open',
+            'notification_receive',
+            'os_update',
+            'screen_view',
+            'session_start',
+            'user_engagement',
+        ];
+
+        if (in_array($eventName, $reservedNames)){
+            throw new ReservedEventNameException("The event name {$eventName} is reserved for Google Analytics 4. Please use a different name.");
+        }
+
+        return $eventName;
+
+    }
 
 
 
