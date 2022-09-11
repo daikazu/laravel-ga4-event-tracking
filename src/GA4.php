@@ -56,6 +56,7 @@ class GA4
 
     /**
      * @throws MissingClientIdException
+     * @throws ReservedEventNameException
      */
     public function sendEvent(array $eventData): array
     {
@@ -102,6 +103,7 @@ class GA4
 
     /**
      * @throws MissingClientIdException
+     * @throws ReservedEventNameException
      */
     public function sendAsSystemEvent()
     {
