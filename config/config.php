@@ -8,8 +8,7 @@ return [
      */
     'measurement_id' => env('GA4_MEASUREMENT_ID'),
 
-    'api_secret'  => env('GA4_MEASUREMENT_PROTOCOL_API_SECRET', null),
-
+    'api_secret' => env('GA4_MEASUREMENT_PROTOCOL_API_SECRET', null),
 
     /**
      * The session key to store the Client ID.
@@ -19,13 +18,13 @@ return [
     /**
      * HTTP URI to post the Client ID to (from the Blade Directive).
      */
-    'http_uri'              => '/gaid',
+    'http_uri' => '/gaid',
 
     /*
     * This queue will be used to perform the API calls to GA.
     * Leave empty to use the default queue.
     */
-    'queue_name'            => '',
+    'queue_name' => '',
 
     /**
      * Send the ID of the authenticated user to GA.

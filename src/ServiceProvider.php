@@ -2,7 +2,6 @@
 
 namespace Daikazu\GA4EventTracking;
 
-use Daikazu\GA4EventTracking\Console\MakeGA4EventCommand;
 use Daikazu\GA4EventTracking\Events\BroadcastEvent;
 use Daikazu\GA4EventTracking\Events\EventBroadcaster;
 use Daikazu\GA4EventTracking\Http\ClientIdRepository;
@@ -23,10 +22,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot(): void
     {
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'daikazu');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'ga4-event-tracking');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
@@ -38,7 +34,6 @@ class ServiceProvider extends BaseServiceProvider
         Blade::directive('sendClientID', function () {
             return "<?php echo view('ga4-event-tracking::sendClientID'); ?>";
         });
-
     }
 
     /**
@@ -54,7 +49,6 @@ class ServiceProvider extends BaseServiceProvider
         $this->registerClientId();
         $this->registerAnalytics();
         $this->registerRoute();
-
 
         // Register the service the package provides.
 //        $this->app->singleton('laravel-ga4-event-tracking', function ($app) {
@@ -89,37 +83,18 @@ class ServiceProvider extends BaseServiceProvider
             __DIR__.'/../resources/views' => base_path('resources/views/vendor/daikazu'),
         ], 'ga4-event-tracking.views');
 
-
         // Registering package commands.
-         $this->commands([
-             MakeGA4EventCommand::class
-         ]);
+//         $this->commands([
+//
+//         ]);
     }
-
-
 
     private function registerAnalytics()
     {
         $this->app->bind('ga4', function () {
             return new GA4();
-
-
-//            return tap(new GA4(), function (GA4 $GA4) {
-//
-////                $GA4->setProtocolVersion(1)->setTrackingId(
-////                    config('ga4-event-tracking.measurement_id')
-////                );
-////
-////                if (config('ga4-event-tracking.anonymize_ip')) {
-////                    $GA4->setAnonymizeIp(1);
-////                }
-//
-//            });
         });
     }
-
-
-
 
     private function registerClientId()
     {
@@ -143,5 +118,4 @@ class ServiceProvider extends BaseServiceProvider
             Route::post($httpUri, StoreClientIdInSession::class)->middleware('web');
         }
     }
-
 }

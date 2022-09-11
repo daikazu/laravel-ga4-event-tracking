@@ -2,9 +2,8 @@
 
 namespace Daikazu\GA4EventTracking\Jobs;
 
-
-use Daikazu\GA4EventTracking\GA4;
 use Daikazu\GA4EventTracking\Events\EventBroadcaster;
+use Daikazu\GA4EventTracking\GA4;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -16,20 +15,20 @@ class SendEventToAnalytics implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $event;
+
     public ?string $clientId;
+
     public ?string $userId;
 
     public function __construct($event, string $clientId = null, string $userId = null)
     {
-        $this->event    = $event;
+        $this->event = $event;
         $this->clientId = $clientId;
-        $this->userId   = $userId;
+        $this->userId = $userId;
     }
-
 
     public function handle(EventBroadcaster $broadcaster)
     {
-
         if ($this->clientId) {
             $broadcaster->withParameters(fn (GA4 $GA4) => $GA4->setClientId($this->clientId));
         }
@@ -40,6 +39,4 @@ class SendEventToAnalytics implements ShouldQueue
 
         $broadcaster->handle($this->event);
     }
-
-
 }

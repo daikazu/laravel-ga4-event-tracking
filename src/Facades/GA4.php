@@ -10,5 +10,4 @@ class GA4 extends Facade
     {
         return 'ga4';
     }
-
 }

@@ -12,8 +12,6 @@ class StoreClientIdInSession
      */
     public function __invoke(Request $request, ClientIdSession $clientIsSession): JsonResponse
     {
-
-
         $data = $request->validate(['client_id' => 'required|string|max:255']);
 
         $clientIsSession->update($data['client_id']);

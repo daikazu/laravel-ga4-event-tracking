@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 class ClientIdSession implements ClientIdRepository
 {
     private Store $session;
+
     private string $key;
 
     public function __construct(Store $session, string $key)
@@ -29,7 +30,7 @@ class ClientIdSession implements ClientIdRepository
      */
     public function get(): ?string
     {
-        return $this->session->get($this->key, fn() => $this->generateId());
+        return $this->session->get($this->key, fn () => $this->generateId());
     }
 
     /**
@@ -37,7 +38,6 @@ class ClientIdSession implements ClientIdRepository
      */
     private function generateId(): string
     {
-        return tap(Str::uuid(), fn($id) => $this->update($id));
+        return tap(Str::uuid(), fn ($id) => $this->update($id));
     }
-
 }

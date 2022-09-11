@@ -9,14 +9,18 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false">
+    <coverage>
+        <include>
+            <directory suffix=".php">src/</directory>
+        </include>
+    </coverage>
     <testsuites>
-        <testsuite name="Package">
-            <directory suffix=".php">./tests/</directory>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist>
-            <directory>src/</directory>
-        </whitelist>
-    </filter>
+    <php>
+        <env name="GA4_MEASUREMENT_ID" value="G-123456789"/>
+        <env name="GA4_MEASUREMENT_PROTOCOL_API_SECRET" value="123456789"/>
+    </php>
 </phpunit>
