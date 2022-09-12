@@ -49,11 +49,6 @@ class ServiceProvider extends BaseServiceProvider
         $this->registerClientId();
         $this->registerAnalytics();
         $this->registerRoute();
-
-        // Register the service the package provides.
-//        $this->app->singleton('laravel-ga4-event-tracking', function ($app) {
-//            return new LaravelGa4EventTracking;
-//        });
     }
 
     /**
@@ -82,11 +77,6 @@ class ServiceProvider extends BaseServiceProvider
         $this->publishes([
             __DIR__.'/../resources/views' => base_path('resources/views/vendor/daikazu'),
         ], 'ga4-event-tracking.views');
-
-        // Registering package commands.
-//         $this->commands([
-//
-//         ]);
     }
 
     private function registerAnalytics()

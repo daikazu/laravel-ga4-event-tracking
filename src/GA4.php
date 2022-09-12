@@ -14,7 +14,9 @@ class GA4
 
     private bool $debugging = false;
 
-    private string|array $eventAction;
+    private string $eventAction;
+
+    private array $eventParams;
 
     public function __construct()
     {
@@ -94,26 +96,31 @@ class GA4
     }
 
     /**
-     * @param  string|array  $eventAction
+     * @param  string  $eventAction
      */
-    public function setEventAction(string|array $eventAction): void
+    public function setEventAction(string $eventAction): void
     {
         $this->eventAction = $eventAction;
+    }
+
+    /**
+     * @param  array  $eventParams
+     */
+    public function setEventParams(array $eventParams): void
+    {
+        $this->eventParams = $eventParams;
     }
 
     /**
      * @throws MissingClientIdException
      * @throws ReservedEventNameException
      */
-    public function sendAsSystemEvent()
+    public function sendAsSystemEvent(): void
     {
-        if (gettype($this->eventAction) === 'string') {
-            $this->sendEvent(['name' => $this->eventAction]);
-        }
-
-        if (gettype($this->eventAction) === 'array') {
-            $this->sendEvent($this->eventAction);
-        }
+        $this->sendEvent([
+            'name' => $this->eventAction,
+            'params' => $this->eventParams,
+        ]);
     }
 
     public function validateEvent($eventAction)

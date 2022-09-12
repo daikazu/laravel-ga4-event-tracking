@@ -28,6 +28,5 @@
 
         collectClientId();
     </script>
-
 @endif
 

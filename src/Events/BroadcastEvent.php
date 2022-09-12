@@ -28,8 +28,8 @@ class BroadcastEvent implements EventBroadcaster
 
         $this->GA4->setEventAction($eventAction);
 
-        if (method_exists($event, 'withParameters')) {
-            $event->withParameters($this->GA4);
+        if (method_exists($event, 'withGA4Parameters')) {
+            $this->GA4->setEventParams($event->withGA4Parameters($this->GA4));
         }
 
         $this->GA4->sendAsSystemEvent();
