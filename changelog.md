@@ -1,8 +1,3 @@
 # Changelog
 
-All notable changes to `LaravelGa4EventTracking` will be documented in this file.
-
-## Version 1.0
-
-### Added
-- Everything
+All notable changes to `laravel-ga4-event-tracking` will be documented in this file.

@@ -1,46 +1,73 @@
 {
     "name": "daikazu/laravel-ga4-event-tracking",
     "description": "Laravel package to easily send events to Google Analytics 4",
+    "keywords": [
+        "daikazu",
+        "laravel",
+        "laravel-ga4-event-tracking"
+    ],
+    "homepage": "https://github.com/daikazu/laravel-ga4-event-tracking",
     "license": "MIT",
     "authors": [
         {
             "name": "Mike Wall",
             "email": "daikazu@gmail.com",
-            "homepage": "http://mikewall.dev"
+            "role": "Developer"
         }
     ],
-    "homepage": "https://github.com/daikazu/laravel-ga4-event-tracking",
-    "keywords": [
-        "laravel",
-        "google-analytics-4",
-        "GA4",
-        "laravel-analytics",
-        "analytics",
-        "analytics-event-tracking"
-    ],
     "require": {
-        "illuminate/support": "~9",
-        "guzzlehttp/guzzle": "^7.5"
+        "php": "^8.1",
+        "spatie/laravel-package-tools": "^1.13.0",
+        "illuminate/contracts": "^9.0"
     },
     "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
         "phpunit/phpunit": "^9.5",
-        "orchestra/testbench": "^7.0"
+        "spatie/laravel-ray": "^1.26"
     },
     "autoload": {
         "psr-4": {
-            "Daikazu\\GA4EventTracking\\": "src/"
+            "daikazu\\GA4\\": "src",
+            "daikazu\\GA4\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Daikazu\\GA4EventTracking\\Tests\\": "tests"
+            "daikazu\\GA4\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Daikazu\\GA4EventTracking\\ServiceProvider"
-            ]
+                "daikazu\\GA4\\GA4ServiceProvider"
+            ],
+            "aliases": {
+                "GA4": "daikazu\\GA4\\Facades\\GA4"
+            }
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

@@ -13,16 +13,29 @@ composer require daikazu/laravel-ga4-event-tracking
 
 3) Optional: You can publish the config file by running this command in your terminal/cmd:
 ``` bash
-php artisan vendor:publish --tag=ga4-event-tracking.config
+php artisan vendor:publish --tag=laravel-ga4-event-tracking-config
 ```
 4) `client_id` is required to post an event to Google Analytics. This package provides a Blade directive which you can put in your layout file after the Google Analytics Code tracking code. It makes a POST request to the backend to store the client id in the session which is later used to post events to Google Analytics 4.
-
 ```html
 <!-- Google Analytics Code -->
 @sendClientID
 <!-- </head> -->
 ```
 The other option is to call the `setClientId($clientId)` method on the `GA4` facade everytime before calling the `sendEvent()` method.
+
+
+## Customization
+
+You can publish and run the migrations with:
+``` bash
+php artisan vendor:publish --tag="laravel-ga4-event-tracking-migrations"
+php artisan migrate
+```
+
+Optionally, you can publish the views using
+```bash
+php artisan vendor:publish --tag="laravel-ga4-event-tracking-views"
+```
 
 ## Usage
 
