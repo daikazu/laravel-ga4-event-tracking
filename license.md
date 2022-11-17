@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) daikazu <daikazu@gmail.com>
+Copyright (c) Mike Wall <daikazu@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
