@@ -1,6 +1,6 @@
 <?php
 
-namespace Daikazu\GA4EventTracking\Http;
+namespace Daikazu\GA4\Http;
 
 interface ClientIdRepository
 {

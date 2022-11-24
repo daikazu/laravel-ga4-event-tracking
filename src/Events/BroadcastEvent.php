@@ -1,8 +1,8 @@
 <?php
 
-namespace Daikazu\GA4EventTracking\Events;
+namespace Daikazu\GA4\Events;
 
-use Daikazu\GA4EventTracking\GA4;
+use Daikazu\GA4\GA4;
 
 class BroadcastEvent implements EventBroadcaster
 {

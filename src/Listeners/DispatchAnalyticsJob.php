@@ -1,9 +1,9 @@
 <?php
 
-namespace Daikazu\GA4EventTracking\Listeners;
+namespace Daikazu\GA4\Listeners;
 
-use Daikazu\GA4EventTracking\Http\ClientIdRepository;
-use Daikazu\GA4EventTracking\Jobs\SendEventToAnalytics;
+use Daikazu\GA4\Http\ClientIdRepository;
+use Daikazu\GA4\Jobs\SendEventToAnalytics;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Auth;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Daikazu\GA4EventTracking\Exceptions;
+namespace Daikazu\GA4\Exceptions;
 
 use Exception;
 

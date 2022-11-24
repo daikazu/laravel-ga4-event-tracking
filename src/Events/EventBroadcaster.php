@@ -1,6 +1,6 @@
 <?php
 
-namespace Daikazu\GA4EventTracking\Events;
+namespace Daikazu\GA4\Events;
 
 interface EventBroadcaster
 {

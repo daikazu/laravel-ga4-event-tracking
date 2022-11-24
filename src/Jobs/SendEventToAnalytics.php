@@ -1,9 +1,9 @@
 <?php
 
-namespace Daikazu\GA4EventTracking\Jobs;
+namespace Daikazu\GA4\Jobs;
 
-use Daikazu\GA4EventTracking\Events\EventBroadcaster;
-use Daikazu\GA4EventTracking\GA4;
+use Daikazu\GA4\Events\EventBroadcaster;
+use Daikazu\GA4\GA4;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

@@ -1,10 +1,9 @@
 <?php
 
-namespace Daikazu\GA4EventTracking;
+namespace Daikazu\GA4;
 
-use Daikazu\GA4EventTracking\Exceptions\MissingClientIdException;
-use Daikazu\GA4EventTracking\Exceptions\ReservedEventNameException;
-use Illuminate\Support\Facades\Http;
+use Daikazu\GA4\Exceptions\MissingClientIdException;
+use Daikazu\GA4\Exceptions\ReservedEventNameException;
 
 class GA4
 {
@@ -29,7 +28,7 @@ class GA4
 
     /**
      * @param  string  $clientId
-     * @return GA4
+     * @return \Daikazu\GA4\GA4
      */
     public function setClientId(string $clientId): self
     {

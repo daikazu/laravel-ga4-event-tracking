@@ -1,7 +1,7 @@
 <?php
 
+// config for Daikazu/GA4
 return [
-
     /**
      * Your GA Measurement ID.
      * https://support.google.com/analytics/answer/1008080
