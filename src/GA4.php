@@ -75,6 +75,7 @@ class GA4
             ],
         ])->post($this->getRequestUrl(), [
             'client_id' => $this->clientId,
+            'user_id' => $this->userId,
             'events' => [$eventData],
         ]);
 
